@@ -1,0 +1,159 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > JournalService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.jj.JournalApp.service</a>
+</div>
+
+<h1>Coverage Summary for Class: JournalService (com.jj.JournalApp.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">JournalService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (1/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    11.1%
+  </span>
+  <span class="absValue">
+    (1/9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.jj.JournalApp.service;
+&nbsp;
+&nbsp;import com.jj.JournalApp.entity.Journalentry;
+&nbsp;import com.jj.JournalApp.repository.JournalRepo;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.data.domain.Pageable;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+&nbsp;import org.springframework.web.bind.annotation.RequestParam;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class JournalService {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private JournalRepo journalRepo;
+&nbsp;
+&nbsp;    public Journalentry createJournalEntry(@RequestBody Journalentry journalentry) {
+<b class="nc">&nbsp;        Journalentry mujournal = this.journalRepo.save(journalentry);</b>
+<b class="nc">&nbsp;        return mujournal;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Journalentry&gt; getAllJournalEntries(Pageable pageable,String search) {
+<b class="nc">&nbsp;       if(search!=null){</b>
+<b class="nc">&nbsp;           return this.journalRepo.findByTitle(search,pageable).getContent();</b>
+&nbsp;       }
+<b class="nc">&nbsp;        return this.journalRepo.findAll(pageable).getContent();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Journalentry getJournalEntryById(@RequestParam String id) {
+<b class="nc">&nbsp;        return this.journalRepo.findById(id).get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void deleteJournalEntryById(@RequestParam String id) {
+<b class="nc">&nbsp;        this.journalRepo.deleteById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Journalentry updateJournalEntry(@RequestBody Journalentry journalentry) {
+<b class="nc">&nbsp;        return this.journalRepo.save(journalentry);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-05-16 11:08</div>
+</div>
+</body>
+</html>
